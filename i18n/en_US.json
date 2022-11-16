@@ -1,0 +1,18 @@
+{
+  "WARNING: Your Opayo Suite license is invalid.": "WARNING: Your Opayo Suite license is invalid.",
+  "Please complete all the required data.": "Please complete all the required data.",
+  "Something went wrong, please select another payment method.": "Something went wrong, please select another payment method.",
+  "Unable to initialize Opayo payment method, please use another payment method.": "Unable to initialize Opayo payment method, please use another payment method.",
+  "Card Holder Name": "Card Holder Name",
+  "Credit Card Number": "Credit Card Number",
+  "Expiry": "Expiry",
+  "Card Verification Number": "Card Verification Number",
+  "%1 is required": "%1 is required",
+  "No field can be empty": "No field can be empty",
+  "Please enter a valid expiration date.": "Please enter a valid expiration date.",
+  "Please enter a valid card holder name.": "Please enter a valid card holder name.",
+  "Please enter a valid card number.": "Please enter a valid card number.",
+  "Please enter a valid CVV.": "Please enter a valid CVV.",
+  "This transaction could not be performed. Please select another payment method.": "This transaction could not be performed. Please select another payment method.",
+  "Invalid Opayo response, please use another payment method.": "Invalid Opayo response, please use another payment method."
+}

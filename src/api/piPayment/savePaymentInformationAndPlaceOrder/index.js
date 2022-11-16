@@ -1,0 +1,3 @@
+import savePaymentInformationAndPlaceOrder from './savePaymentInformationAndPlaceOrder';
+
+export default savePaymentInformationAndPlaceOrder;
