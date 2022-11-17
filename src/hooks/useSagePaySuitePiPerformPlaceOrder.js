@@ -10,17 +10,18 @@ import useSagePaySuiteCartContext from './useSagePaySuiteCartContext';
 import { setPaymentMethodRequest } from '../../../../api';
 import { placePiOrder } from '../api';
 import piConfig from '../components/pi/piConfig';
+import LocalStorage from '../../../../utils/localStorage';
 
 export default function useSagePaySuitePiPerformPlaceOrder(paymentMethodCode) {
   const { cartId, setOrderInfo } = useSagePaySuiteCartContext();
-  const { setPageLoader, appDispatch, isLoggedIn } =
-    useSagePaySuiteAppContext();
+  const { setPageLoader, appDispatch } = useSagePaySuiteAppContext();
 
   return useCallback(
     async (values, additionalData, extensionAttributes = {}) => {
       try {
         const merchantSessionKeyValue = `${additionalData.merchantSessionKey}`;
         const email = _get(values, `${LOGIN_FORM}.email`);
+        const isLoggedIn = !!LocalStorage.getCustomerToken();
         const paymentMethodData = {
           paymentMethod: {
             method: paymentMethodCode,
@@ -34,7 +35,7 @@ export default function useSagePaySuitePiPerformPlaceOrder(paymentMethodCode) {
           });
         }
 
-        if (!isLoggedIn) {
+        if (isLoggedIn) {
           _set(paymentMethodData, 'email', email);
         } else {
           _set(paymentMethodData, 'cartId', cartId);
@@ -90,13 +91,6 @@ export default function useSagePaySuitePiPerformPlaceOrder(paymentMethodCode) {
         return errorMessage;
       }
     },
-    [
-      cartId,
-      setOrderInfo,
-      setPageLoader,
-      appDispatch,
-      isLoggedIn,
-      paymentMethodCode,
-    ]
+    [cartId, setOrderInfo, setPageLoader, appDispatch, paymentMethodCode]
   );
 }
