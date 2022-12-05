@@ -57,6 +57,7 @@ function PiDropinForm() {
   }, [method, registerPaymentAction, paymentSubmitHandler]);
 
   if (!isSelected) {
+    piConfig.destroySagePayInstance();
     return (
       <RadioInput
         value={method.code}
