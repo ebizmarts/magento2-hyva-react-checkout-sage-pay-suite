@@ -145,6 +145,13 @@ export default function useSagePaySuitePi(paymentMethodCode) {
             ) {
               errorMessage = jsonResponse.error.message;
             } else if (
+              jsonResponse !== null &&
+              jsonResponse.errors &&
+              jsonResponse.errors[0] &&
+              jsonResponse.errors[0].clientMessage
+            ) {
+              errorMessage = jsonResponse.errors[0].clientMessage;
+            } else if (
               response &&
               response.errors &&
               response.errors[0] &&
