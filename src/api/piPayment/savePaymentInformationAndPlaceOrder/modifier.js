@@ -35,6 +35,10 @@ export default function savePaymentInformationAndPlaceOrderModifier(result) {
   );
   const parEq = _get(result, 'data.savePaymentInformationAndPlaceOrder.par_eq');
   const creq = _get(result, 'data.savePaymentInformationAndPlaceOrder.creq');
+  const redirectToFailureUrl = _get(
+    result,
+    'data.savePaymentInformationAndPlaceOrder.redirect_to_failure_url'
+  );
 
   return {
     status,
@@ -47,5 +51,6 @@ export default function savePaymentInformationAndPlaceOrderModifier(result) {
     success,
     errorMessage,
     response,
+    redirectToFailureUrl,
   };
 }
