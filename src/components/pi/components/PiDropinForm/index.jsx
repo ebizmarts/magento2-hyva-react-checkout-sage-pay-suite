@@ -17,8 +17,13 @@ function PiDropinForm() {
   const { registerPaymentAction } = useSagePaySuiteCheckoutFormContext();
   const { handlePiDropinPlaceOrder, authorizeUser, checkProcessPaymentEnable } =
     useSagePaySuitePi(method.code);
+  const { initializeMerchantSessionKey } = useGenerateMerchantSessionKey(
+    piConfig.getSagePayUrl(),
+    method.code
+  );
   const { setErrorMessage } = useSagePaySuiteAppContext();
   const [showPiModal, setShowPiModal] = useState(false);
+  const [isPiScritInitialized, setIsPiScritInitialized] = useState(false);
 
   /**
    * This will be fired when user placing the order and this payment method
@@ -56,8 +61,26 @@ function PiDropinForm() {
     registerPaymentAction(method.code, paymentSubmitHandler);
   }, [method, registerPaymentAction, paymentSubmitHandler]);
 
+  const generateMerchantSessionKey = useEffect(() => {
+    if (selected.code === method.code && !isPiScritInitialized) {
+      try {
+        initializeMerchantSessionKey();
+        setIsPiScritInitialized(true);
+      } catch (error) {
+        setErrorMessage(error);
+      }
+    }
+  }, [
+    selected,
+    method,
+    initializeMerchantSessionKey,
+    setErrorMessage,
+    isPiScritInitialized,
+  ]);
+
   if (!isSelected) {
     piConfig.destroySagePayInstance();
+    setIsPiScritInitialized(false);
     return (
       <RadioInput
         value={method.code}
@@ -83,7 +106,7 @@ function PiDropinForm() {
       <div>
         <div>
           {/* eslint-disable */}
-          {useGenerateMerchantSessionKey(piConfig.getSagePayUrl(), method.code)}
+          {generateMerchantSessionKey}
           {/* eslint-enable */}
         </div>
       </div>
