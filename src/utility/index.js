@@ -78,9 +78,9 @@ export function performRedirect(response, paymentCode) {
         'Invalid Opayo response, please use another payment method.'
       );
     }
-  } else if (shouldRedirectToCart(response.redirect_to_failure_url)) {
+  } else if (shouldRedirectToCart(response.redirectToFailureUrl)) {
     piConfig.destroySagePayInstance();
-    window.location.href = response.redirect_to_failure_url;
+    window.location.href = response.redirectToFailureUrl;
   } else if (shouldRedirect(response)) {
     piConfig.destroySagePayInstance();
     redirectToCreateOrderForFailedTransaction += `?transactionId=${response.transactionId}&quoteId=${response.quoteId}&errorMessage=${response.errorMessage}`;

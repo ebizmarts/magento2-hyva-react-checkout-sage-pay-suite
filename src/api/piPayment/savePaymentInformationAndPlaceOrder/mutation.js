@@ -65,6 +65,7 @@ export const SAVE_PAYMENT_INFORMATION_PLACE_ORDER = `
       success
       error_message
       response
+      redirect_to_failure_url
     }
   }
 `;
