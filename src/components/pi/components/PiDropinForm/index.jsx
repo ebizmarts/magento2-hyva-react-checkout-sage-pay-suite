@@ -8,6 +8,7 @@ import useSagePaySuitePi from '../../hooks/useSagePaySuitePi';
 import useSagePaySuiteAppContext from '../../../../hooks/useSagePaySuiteAppContext';
 import useSagePaySuiteCheckoutFormContext from '../../../../hooks/useSagePaySuiteCheckoutFormContext';
 import PiModal from '../PiModal';
+import useSagePaySuiteCartContext from '../../../../hooks/useSagePaySuiteCartContext';
 import piConfig from '../../piConfig';
 
 function PiDropinForm() {
@@ -22,8 +23,11 @@ function PiDropinForm() {
     method.code
   );
   const { setErrorMessage } = useSagePaySuiteAppContext();
+  const { isVirtualCart, doCartContainShippingAddress } =
+    useSagePaySuiteCartContext();
   const [showPiModal, setShowPiModal] = useState(false);
   const [isPiScritInitialized, setIsPiScritInitialized] = useState(false);
+  const paymentAvailable = isVirtualCart || doCartContainShippingAddress;
 
   /**
    * This will be fired when user placing the order and this payment method
@@ -85,6 +89,7 @@ function PiDropinForm() {
       <RadioInput
         value={method.code}
         label={method.title}
+        disabled={!paymentAvailable}
         name="paymentMethod"
         checked={isSelected}
         onChange={actions.change}

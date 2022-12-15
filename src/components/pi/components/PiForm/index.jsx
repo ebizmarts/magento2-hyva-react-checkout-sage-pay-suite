@@ -22,10 +22,12 @@ function PiForm() {
   const { handlePiPlaceOrder, authorizeUser, checkProcessPaymentEnable } =
     useSagePaySuitePi(method.code);
   const { setPageLoader, setErrorMessage } = useSagePaySuiteAppContext();
-  const { selectedPaymentMethod } = useSagePaySuiteCartContext();
+  const { selectedPaymentMethod, isVirtualCart, doCartContainShippingAddress } =
+    useSagePaySuiteCartContext();
   const methodCode = _get(method, 'code');
   const { setPaymentMethod } = usePaymentMethodCartContext();
   const [showPiModal, setShowPiModal] = useState(false);
+  const paymentAvailable = isVirtualCart || doCartContainShippingAddress;
 
   /**
    * This will be fired when user placing the order and this payment method
@@ -95,6 +97,7 @@ function PiForm() {
       <RadioInput
         value={method.code}
         label={method.title}
+        disabled={!paymentAvailable}
         name="paymentMethod"
         checked={isSelected}
         onChange={actions.change}
