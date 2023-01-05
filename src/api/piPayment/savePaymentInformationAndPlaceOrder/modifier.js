@@ -33,7 +33,6 @@ export default function savePaymentInformationAndPlaceOrderModifier(result) {
     result,
     'data.savePaymentInformationAndPlaceOrder.acs_url'
   );
-  const parEq = _get(result, 'data.savePaymentInformationAndPlaceOrder.par_eq');
   const creq = _get(result, 'data.savePaymentInformationAndPlaceOrder.creq');
   const redirectToFailureUrl = _get(
     result,
@@ -46,7 +45,6 @@ export default function savePaymentInformationAndPlaceOrderModifier(result) {
     orderId,
     quoteId,
     acsUrl,
-    parEq,
     creq,
     success,
     errorMessage,

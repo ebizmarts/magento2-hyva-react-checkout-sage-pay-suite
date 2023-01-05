@@ -60,7 +60,6 @@ export const SAVE_PAYMENT_INFORMATION_PLACE_ORDER = `
       order_id
       quote_id
       acs_url
-      par_eq
       creq
       success
       error_message
