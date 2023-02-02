@@ -49,29 +49,20 @@ export function performRedirect(response, paymentCode) {
     if (response.status === 'Ok') {
       window.location.replace(`${config.baseUrl}/checkout/onepage/success/`);
     } else if (response.status === '3DAuth') {
-      /**
-       * 3D secure authentication required
-       */
-      if (typeof response.parEq === 'undefined' || response.parEq === null) {
-        const form3Dv2 = document.getElementById(
-          `${paymentCode}-3DsecureV2-form`
-        );
-        form3Dv2.setAttribute('action', response.acsUrl);
-        form3Dv2.elements[0].setAttribute('value', response.creq);
+      const form3Dv2 = document.getElementById(
+        `${paymentCode}-3DsecureV2-form`
+      );
+      form3Dv2.setAttribute('action', response.acsUrl);
+      form3Dv2.elements[0].setAttribute('value', response.creq);
 
-        if (!sagePayIsMobile() && !threeDNewWindowEnabled()) {
-          const openSagePaySuitePiModal = document.getElementById(
-            'openSagePaySuitePiModal'
-          );
-          openSagePaySuitePiModal.click();
-          window.piForm3Dv2 = form3Dv2;
-        } else {
-          form3Dv2.submit();
-        }
-      } else {
-        errorMessage = __(
-          'Invalid Opayo response, please use another payment method.'
+      if (!sagePayIsMobile() && !threeDNewWindowEnabled()) {
+        const openSagePaySuitePiModal = document.getElementById(
+          'openSagePaySuitePiModal'
         );
+        openSagePaySuitePiModal.click();
+        window.piForm3Dv2 = form3Dv2;
+      } else {
+        form3Dv2.submit();
       }
     } else {
       errorMessage = __(
