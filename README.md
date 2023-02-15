@@ -7,13 +7,13 @@
 
 # How to use it with Hyvä Checkout?
 
-1. Install [additional module](https://github.com/ebizmarts/magento2-sage-pay-suite-graph-ql) which adds extra GraphQL resources to the Magento.
+1. Install [additional module](https://ebizmarts-desk.zendesk.com/hc/en-us/articles/12938791027739-Additional-module-for-Sage-Pay-Suite-Hyv%C3%A4-Checkout) which adds extra GraphQL resources to the Magento.
 2. Install our compatibility module for hyvä checkout, to do this add the below code in your package.json:
 
     ```
     "config": {
         "paymentMethodsRepo": {
-            "sagepaysuitepi": "git@github.com:ebizmarts/magento2-hyva-checkout-sage-pay-suite.git"
+            "sagepaysuitepi": "https://github.com/ebizmarts/magento2-hyva-checkout-sage-pay-suite.git"
         }
     },
     ```
