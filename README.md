@@ -13,7 +13,7 @@
     ```
     "config": {
         "paymentMethodsRepo": {
-            "sagepaysuitepi": "git@github.com:ebizmarts/magento2-hyva-checkout-sage-pay-suite.git"
+            "sagepaysuitepi": "https://github.com/ebizmarts/magento2-hyva-checkout-sage-pay-suite.git"
         }
     },
     ```
