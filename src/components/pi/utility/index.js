@@ -21,7 +21,11 @@ export function isLengthFour(expirationDate) {
 }
 
 export function getCurrentMonth() {
-  return (new Date().getMonth() + 1).toString();
+  let currentMonth = (new Date().getMonth() + 1).toString();
+  if (currentMonth.length === 1) {
+    currentMonth = currentMonth.padStart(2, '0');
+  }
+  return currentMonth;
 }
 
 export function getCurrentYear() {
