@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-1. A working Magento site with [Sage Pay Suite](https://ebizmarts-desk.zendesk.com/hc/en-us/articles/1260807409270-Installation-Guide-M2) module installed and configured.
+1. A working Magento site with [Sage Pay Suite](https://wiki.ebizmarts.com/opayo/m2-installation-guide) module installed and configured.
 2. [Hyvä React Checkout](https://github.com/hyva-themes/magento2-react-checkout) is installed and configured.
 
 # How to use it with Hyvä React Checkout?
 
-1. Install [additional module](https://ebizmarts-desk.zendesk.com/hc/en-us/articles/12938791027739-Additional-module-for-Sage-Pay-Suite-Hyv%C3%A4-Checkout) which adds extra GraphQL resources to the Magento.
+1. Install [additional module](https://wiki.ebizmarts.com/opayo/additional-module-hyva-reach-checkout) which adds extra GraphQL resources to the Magento.
 2. Install our compatibility module for hyvä react checkout, to do this add the below code in your package.json:
 
     ```
